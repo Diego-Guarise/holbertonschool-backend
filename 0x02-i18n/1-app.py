@@ -16,5 +16,18 @@ def index():
     return render_template('0-index.html')
 
 
+class Config(object):
+    """
+    Basic Flask app
+    """
+
+    LANGUAGES = ["en", "fr"]
+    BABEL_DEFAULT_LOCALE = "en"
+    BABEL_DEFAULT_TIMEZONE = "UTC"
+
+
+app.config.from_object(Config)
+
+
 if __name__ == '__main__':
     app.run(debug=True)
