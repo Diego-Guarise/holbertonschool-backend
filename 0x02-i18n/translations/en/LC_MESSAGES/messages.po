@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2022-05-17 21:28-0300\n"
-"PO-Revision-Date: 2022-05-17 21:30-0300\n"
+"POT-Creation-Date: 2022-05-17 21:35-0300\n"
+"PO-Revision-Date: 2022-05-17 21:35-0300\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
 "Language-Team: en <LL@li.org>\n"
@@ -20,9 +20,9 @@ msgstr ""
 
 #: templates/3-index.html:4
 msgid "home_tittle"
-msgstr ""
+msgstr "Welcome to Holberton"
 
 #: templates/3-index.html:7
 msgid "home_header"
-msgstr ""
+msgstr "Hello world!"
 
