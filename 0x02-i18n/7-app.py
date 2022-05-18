@@ -46,7 +46,7 @@ class Config(object):
     BABEL_DEFAULT_TIMEZONE = "UTC"
 
 
-app.config.from_object('5-app.Config')
+app.config.from_object('7-app.Config')
 
 
 @babel.localeselector
@@ -63,7 +63,7 @@ def get_locale():
 @app.route('/', methods=['GET', 'POST'], strict_slashes=False)
 def index():
     """display index page"""
-    return render_template('6-index.html')
+    return render_template('7-index.html')
 
 
 if __name__ == '__main__':
