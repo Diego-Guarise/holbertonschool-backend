@@ -7,6 +7,9 @@ Basic Flask app
 from flask import Flask, render_template, request, g
 from flask_babel import Babel
 
+app = Flask(__name__)
+babel = Babel(app)
+
 
 users = {
     1: {"name": "Balou", "locale": "fr", "timezone": "Europe/Paris"},
@@ -16,14 +19,20 @@ users = {
 }
 
 
-app = Flask(__name__)
-babel = Babel(app)
+def get_user():
+    """ returns a user dictionary """
+    login_as = request.args.get("login_as", False)
+    if login_as:
+        user = users.get(int(login_as), False)
+        if user:
+            return user
+    return None
 
 
-@app.route('/', methods=['GET', 'POST'], strict_slashes=False)
-def index():
-    """display index page"""
-    return render_template('5-index.html')
+@app.before_request
+def before_request():
+    """ find a user if any, and set it as a global on flask.g.user"""
+    g.user = get_user()
 
 
 class Config(object):
@@ -49,20 +58,10 @@ def get_locale():
         return request.accept_languages.best_match(Config.LANGUAGES)
 
 
-def get_user() -> Union[dict, None]:
-    """ returns a user dictionary """
-    login_as = request.args.get("login_as", False)
-    if login_as:
-        user = users.get(int(login_as), False)
-        if user:
-            return user
-    return None
-
-
-@app.before_request
-def before_request():
-    """ find a user if any, and set it as a global on flask.g.user"""
-    g.user = get_user()
+@app.route('/', methods=['GET', 'POST'], strict_slashes=False)
+def index():
+    """display index page"""
+    return render_template('5-index.html')
 
 
 if __name__ == '__main__':
