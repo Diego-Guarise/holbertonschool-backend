@@ -60,11 +60,11 @@ def get_locale():
         return request.accept_languages.best_match(Config.LANGUAGES)
 
 
-@app.route('/', methods=['GET', 'POST'], strict_slashes=False)
+@app.route('/', methods=['GET'], strict_slashes=False)
 def index():
     """display index page"""
     return render_template('5-index.html')
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port="5000")
